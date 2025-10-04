@@ -1,0 +1,1 @@
+Changes related project structure
