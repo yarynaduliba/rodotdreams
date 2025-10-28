@@ -16,11 +16,11 @@ export class Van extends Car {
         this.loadCapacity = loadCapacity;
     }
 
-    public canCarry(cargoWeight: number): void {
+    public canCarry(cargoWeight: number): string {
         if (cargoWeight < this.loadCapacity) {
-            console.log(`${this.label} can carry ${cargoWeight} kg of cargo`);
+            return `${this.label} can carry ${cargoWeight} kg of cargo`;
         } else {
-            console.log(`${this.label} can not carry ${cargoWeight} kg of cargo`);
+            return `${this.label} can not carry ${cargoWeight} kg of cargo`;
         }
     }
 
