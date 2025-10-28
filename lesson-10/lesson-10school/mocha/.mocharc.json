@@ -1,0 +1,9 @@
+{
+    "extension": "ts",
+    "spec": "lesson-10school/specs/**/*.spec.ts",
+    "require": ["tsx", "./lesson-10school/hooks/mocha-global-setup.hook.ts"],
+    "retries": 2,
+    "timeout": 120000
+
+
+}
