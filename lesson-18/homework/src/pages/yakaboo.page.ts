@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
-export class YakabooLoginPage {
+export class YakabooPage {
 
     private readonly _url: string = process.env.BASE_URL ?? '';
 

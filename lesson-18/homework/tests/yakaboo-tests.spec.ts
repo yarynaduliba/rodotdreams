@@ -1,36 +1,37 @@
 import { expect } from '@playwright/test';
-import { YakabooLoginPage } from 'src/pages/yakaboo.page';
-import { test } from 'src/fixures/yakaboo.fixture';
+import { YakabooPage } from 'src/pages/yakaboo.page';
+// import { test } from 'src/fixtures/yakaboo.fixture';
+import { test } from '../src/fixtures/yakaboo.fixture';
 
 test.describe('Yakaboo login tests', () => {
     test('user can login', async ({ page }) => {
-        const yakabooLoginPage = new YakabooLoginPage(page);
-        await yakabooLoginPage.login();
+        const yakabooPage = new YakabooPage(page);
+        await yakabooPage.login();
 
-        await expect(yakabooLoginPage.profileIcon).toBeVisible();
+        await expect(yakabooPage.profileIcon).toBeVisible();
     });
 
     test('user can log out', async ({ page}) => {
-        const yakabooLoginPage = new YakabooLoginPage(page);
-        await yakabooLoginPage.login();
-        await yakabooLoginPage.logOut();
+        const yakabooPage = new YakabooPage(page);
+        await yakabooPage.login();
+        await yakabooPage.logOut();
 
-        await expect(yakabooLoginPage.loginIcon).toBeVisible();
+        await expect(yakabooPage.loginIcon).toBeVisible();
     });
 
     test('user cannot login with wrong credentials', async ({ page }) => {
-        const yakabooLoginPage = new YakabooLoginPage(page);
-        await yakabooLoginPage.loginWithWrongCredentials('ysdbdb@gmail.com', 'sdsdvvv');
+        const yakabooPage = new YakabooPage(page);
+        await yakabooPage.loginWithWrongCredentials('ysdbdb@gmail.com', 'sdsdvvv');
 
-        await expect(yakabooLoginPage.loginErrorMessage).toBeVisible();
+        await expect(yakabooPage.loginErrorMessage).toBeVisible();
     });
 
     test('adding book to shopping card', async ({ page}) => {
-        const yakabooLoginPage = new YakabooLoginPage(page);
-        await yakabooLoginPage.login();
+        const yakabooPage = new YakabooPage(page);
+        await yakabooPage.login();
 
-        const firstBookTitle =  await yakabooLoginPage.addFirstBookToCart();
-        const cartBookTitle = await yakabooLoginPage.getCartFirstBookTitle();
+        const firstBookTitle =  await yakabooPage.addFirstBookToCart();
+        const cartBookTitle = await yakabooPage.getCartFirstBookTitle();
         await expect(cartBookTitle).toBe(firstBookTitle);
     });
 });
